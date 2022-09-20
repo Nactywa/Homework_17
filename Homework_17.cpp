@@ -2,31 +2,53 @@
 //
 
 #include <iostream>
-#include <cmath>
 
-class Vector
+class vector
 {
 public:
-	Vector() : x(), y(), z()
-	{}
+    vector() :
+        a(0.0f),
+        b(0.0f),
+        c(0.0f)
+    {
+    }
 
-	void Show()
-	{
-		double x{ std::pow(3.0,2.0) };
-		double y{ std::pow(5.0,2.0) };
-		double z{ std::pow(6.0,2.0) };
+    ~vector() = default;
 
-		 sqrt(x + y + z);
-}
+    void SetVector(const double x, const double y, const double z)
+    {
+        a = x;
+        b = y;
+        c = z;
+    }
+
+    double GetModuleVector()
+    {
+        return sqrt(a * a + b * b + c * c);
+    }
+
+    void ShowVector()
+    {
+        std::cout << "A: " << a << " B: " << b << " C: " << c << '\n';
+    }
+
+
 private:
-	double x;
-	double y;
-	double z;
+    double a;
+    double b;
+    double c;
 };
-
 
 int main()
 {
-	std::cout << "sqrt";
-}
+    vector p1;
+    vector p2;
 
+    int n, m, b;
+    std::cin >> n >> m >> b;
+
+    p1.SetVector(n, m, b);
+    p2.ShowVector();
+
+    std::cout << "Module Vector: " << p1.GetModuleVector();
+}
